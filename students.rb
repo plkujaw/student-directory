@@ -8,7 +8,7 @@
 # {name: "The Wicked Witch of the West", cohort: :november},
 # {name: "Terminator", cohort: :november},
 # {name: "Freddy Krueger", cohort: :november},
-#{name: "The Joker", cohort: :november},
+# {name: "The Joker", cohort: :november},
 # {name: "Joffrey Baratheon", cohort: :november},
 # {name: "Norman Bates", cohort: :november}
 # ]
