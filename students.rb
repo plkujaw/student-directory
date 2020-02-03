@@ -1,4 +1,4 @@
-# add students into an array
+# add students data into an array of hashes
 students = [
 {name: "Dr. Hannibal Lecter", cohort: :november},
 {name: "Darth Vader", cohort: :november},
@@ -33,5 +33,5 @@ def print_footer(names)
 end
 
 print_header
-print(students) # passing students array as the argument so students array = students argument in the method
-print_footer(students) # passing students array as the argument so students array = names argument in the method
+print(students) # passing students array of hashes as the method argument so students array = students method argument
+print_footer(students) # passing students array of hashes as the method argument so students array = names method argument
