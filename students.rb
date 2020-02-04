@@ -25,6 +25,7 @@ def interactive_menu
   puts "2. Show the students"
   puts "9. Exit"
   # 2. read the input and save it to variable
+  selection = gets.chomp
   # 3. do what the user has asked
   end
 end
