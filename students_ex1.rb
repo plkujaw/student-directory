@@ -33,33 +33,41 @@ def input_students
     # get another name of the student
     name = gets.chomp
   end
+  # return the array of students
   students
 end
 
 # print header
 def print_header
-  puts "The students of Villains Academy"
-  puts "--------------------------------"
+  puts "The students of Villains Academy".center(50)
+  puts "--------------------------------".center(50)
 end
 
 # print the list of the students
 def print(students)
+=begin  index = 0
+  until index == students.length
+    puts "#{students[index]}"
+        index += 1
+  end
+=end
+  
   students.each.with_index do |student, index|
     # 8.2
     # if student[:name].downcase.start_with? "t"
     # 8.3
-    if student[:name].length < 12
-      puts "#{(index + 1)}. #{student[:name]} (#{student[:cohort]} cohort)"
-    end
+    # if student[:name].length < 12
+    puts "#{(index + 1)}. #{student[:name]} (#{student[:cohort]} cohort)".center(50)
+    # end
   end
 end
 
 # print total number of students
 def print_footer(names)
   if names.count == 1 
-    puts "Overall we have #{names.count} great student"
+    puts "Overall we have #{names.count} great student".center(50)
   else
-    puts "Overall we have #{names.count} great students"
+    puts "Overall we have #{names.count} great students".center(50)
   end
 end
 
