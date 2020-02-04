@@ -45,7 +45,10 @@ end
 # print the list of the students
 def print(students)
   students.each.with_index do |student, index|
-    if student[:name].downcase.start_with? "t"
+    # 8.2
+    # if student[:name].downcase.start_with? "t"
+    # 8.3
+    if student[:name].length < 12
       puts "#{(index + 1)}. #{student[:name]} (#{student[:cohort]} cohort)"
     end
   end
