@@ -21,9 +21,11 @@ end
 def interactive_menu
   loop do
   # 1. print the menu and ask user what to do
+  puts "1. Input the students"
+  puts "2. Show the students"
+  puts "9. Exit"
   # 2. read the input and save it to variable
   # 3. do what the user has asked
-  # 4. repeat from step 1
   end
 end
 
