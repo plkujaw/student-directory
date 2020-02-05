@@ -45,13 +45,13 @@ end
 
 # print the list of the students
 def print(students)
-=begin  index = 0
+  index = 0
   until index == students.length
-    puts "#{students[index]}"
-        index += 1
+    puts students [index][:name]
+    puts students [index][:cohort]
+    index += 1
   end
-=end
-  
+=begin  
   students.each.with_index do |student, index|
     # 8.2
     # if student[:name].downcase.start_with? "t"
@@ -60,6 +60,7 @@ def print(students)
     puts "#{(index + 1)}. #{student[:name]} (#{student[:cohort]} cohort)".center(50)
     # end
   end
+=end
 end
 
 # print total number of students
