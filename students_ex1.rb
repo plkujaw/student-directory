@@ -40,7 +40,7 @@ end
 def print_out(students)
   sorted_by_cohort = {}
   
-  students.map do |key, value|
+  students.each do |key|
   
     cohort = key[:cohort]
     name = key[:name]
