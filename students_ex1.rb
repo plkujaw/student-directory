@@ -5,22 +5,25 @@ def input_students
   # create an empty array
   students = []
   # get the first name
-  puts "Name"
+  puts "Name:"
   name = gets.chomp
    # while the name is not empty, repeat this code
   while !name.empty? do
     # add the student hash into the array
-    puts "Cohort"
+    puts "Cohort:"
     cohort = gets.chomp.to_sym
-    cohort = "february".to_sym if cohort.empty?
-    p students << {name: name, cohort: cohort}
+    if cohort.empty?
+      cohort = "february".to_sym
+      puts cohort
+    end
+    students << {name: name, cohort: cohort}
       if students.length == 1 
         puts "Now we have #{students.count} student"
       else
         puts "Now we have #{students.count} students"
       end
     # get another name of the student
-    puts "Name"
+    puts "Name:"
     name = gets.chomp
   end
   # return the array of students
@@ -34,10 +37,27 @@ def print_header
 end
 
 # print the list of the students
-def print(students)
-  students.each.with_index do |student, index|
-    puts "#{(index + 1)}. #{student[:name]} (#{student[:cohort]} cohort)".center(50)
+def print_out(students)
+  sorted_by_cohort = {}
+  
+  students.map do |key, value|
+  
+    cohort = key[:cohort]
+    name = key[:name]
+  
+    if sorted_by_cohort[cohort] == nil
+      sorted_by_cohort[cohort] = [name]
+    else
+      sorted_by_cohort[cohort].push(name)
+    end
   end
+  
+  sorted_by_cohort[:february].each.with_index do |name, index| 
+    puts "#{index + 1}. #{name} (february cohort)".center(50)
+  end
+    
+  # students.each.with_index do |student, index|
+    # puts "#{(index + 1)}. #{student[:name]} (#{student[:cohort]} cohort)".center(50)
 end
 
 # print total number of students
@@ -53,5 +73,5 @@ end
 students = input_students
 
 print_header
-print(students) # passing students array of hashes as the method argument so students array = students method argument
+print_out(students) # passing students array of hashes as the method argument so students array = students method argument
 print_footer(students) # passing students array of hashes as the method argument so students array = names method argument
