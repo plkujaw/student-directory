@@ -1,3 +1,4 @@
+require 'csv'
 @students = [] # an empty array accessible to all methods
 
 # input students
@@ -35,8 +36,8 @@ end
 def print_menu
   puts "1. Input the students"
   puts "2. Show the students"
-  puts "3. Save the list to students.csv"
-  puts "4. Load the list from students.csv"
+  puts "3. Save the list"
+  puts "4. Load the list"
   puts "9. Exit"
 end
 
@@ -76,28 +77,30 @@ def save_students
   puts "Save the list as:"
   save_to_filename = STDIN.gets.chomp
   # open file for writing
-  file = File.open(save_to_filename, "w")
-  # iterate over the array of students
-  @students.each do |student|
+  File.open(save_to_filename, "w") { |file|
+    # iterate over the array of students
+    @students.each do |student|
     student_data = [student[:name], student[:cohort]]
     csv_line = student_data.join(",")
     file.puts csv_line
-  end
+    end 
+  }
   puts "You have saved the list of the students in the #{save_to_filename} file"
-  file.close
+  # file.close
 end
 
 # load the students list from the file
 def load_students(load_from_filename = STDIN.gets.chomp)
   # puts "Load the list from the file:"
   # load_from_filename = STDIN.gets.chomp
-  file = File.open(load_from_filename, "r")
-  file.readlines.each do |line|
+  File.open(load_from_filename, "r") { |file|
+    file.readlines.each do |line|
     name, cohort = line.chomp.split(",")
-      @students << {name: name, cohort: cohort.to_sym} 
+    @students << {name: name, cohort: cohort.to_sym} 
     end
-    puts "Loaded list of #{@students.count} students from #{load_from_filename}"
-  file.close
+  }
+  puts "Loaded list of #{@students.count} students from #{load_from_filename}"
+  #file.close
 end
 
 def try_load_students
