@@ -83,7 +83,8 @@ def load_students(filename = "students.csv")
 end
 
 def try_load_students
-  filename = ARGV.first # first argument from the command line
+  # filename = ARGV.first # first argument from the command line
+  filename = "students.csv" # load students.csv by default
   return if filename.nil? # get out of the method if argument isn't given
   if File.exist?(filename) # if argument is given check if file exists
     load_students(filename)
