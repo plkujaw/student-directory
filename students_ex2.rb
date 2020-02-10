@@ -16,6 +16,11 @@ def input_students
   end
 end
 
+# def create_students_list
+#  @students << {name: name, cohort: :november}
+#  @students << {name: name, cohort: cohort.to_sym} 
+# end
+
 # interactive menu
 def interactive_menu
   loop do
@@ -45,14 +50,23 @@ end
 def process(selection)
     case selection
       when "1"
+        puts "You have chosen to input the students:"
+        puts ""
         input_students
       when "2"
+        puts "You have chosen to show the list of the students:"
+        puts ""
         show_students
       when "3"
+        puts "You have saved the list of the students"
+        puts ""
         save_students
       when "4"
+        puts "Loaded list of #{@students.count} students"
+        puts ""
         load_students
       when "9"
+        puts "Good bye!"
         exit # this will cause the program to terminate
       else
         puts "I don't know what you meant, try again"
@@ -79,6 +93,7 @@ def load_students(filename = "students.csv")
     name, cohort = line.chomp.split(",")
       @students << {name: name, cohort: cohort.to_sym} 
     end
+    # puts "Loaded list of #{@students.count} students from #{filename}"
   file.close
 end
 
@@ -103,7 +118,7 @@ end
 
 # show the list of the students
 def print_students_list
-  @students.each do |student|
+    @students.each do |student|
     puts "#{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
