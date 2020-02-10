@@ -10,4 +10,4 @@ Program can be run by typing in the command line: ruby students.rb. User will be
 
 **File containing students directory must be of name students.csv**
 
-Run the program from the command line by typing ruby students.rb students.csv. If such file doesn't exist, program will terminate with adequate prompt.
+Run the program from the command line by typing ruby students.rb *list_to_load.csv*. If next argument isn't given, it will try to load the list from students.csv file. If such file doesn't exist, program will terminate with adequate prompt.
