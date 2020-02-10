@@ -58,12 +58,9 @@ def process(selection)
         puts ""
         show_students
       when "3"
-        puts "You have saved the list of the students"
-        puts ""
         save_students
       when "4"
-        puts "Loaded list of #{@students.count} students"
-        puts ""
+        puts "Load the list from:"
         load_students
       when "9"
         puts "Good bye!"
@@ -75,38 +72,44 @@ end
 
 # save the students list into the file
 def save_students
+  # ask for a filename to save to
+  puts "Save the list as:"
+  save_to_filename = STDIN.gets.chomp
   # open file for writing
-  file = File.open("students.csv", "w")
+  file = File.open(save_to_filename, "w")
   # iterate over the array of students
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
     csv_line = student_data.join(",")
     file.puts csv_line
   end
+  puts "You have saved the list of the students in the #{save_to_filename} file"
   file.close
 end
 
 # load the students list from the file
-def load_students(filename = "students.csv")
-  file = File.open(filename, "r")
+def load_students(load_from_filename = STDIN.gets.chomp)
+  # puts "Load the list from the file:"
+  # load_from_filename = STDIN.gets.chomp
+  file = File.open(load_from_filename, "r")
   file.readlines.each do |line|
     name, cohort = line.chomp.split(",")
       @students << {name: name, cohort: cohort.to_sym} 
     end
-    # puts "Loaded list of #{@students.count} students from #{filename}"
+    puts "Loaded list of #{@students.count} students from #{load_from_filename}"
   file.close
 end
 
 def try_load_students
   # filename = ARGV.first # first argument from the command line
-  filename = "students.csv" # load students.csv by default
+  filename = "students.csv" # load from students.csv by default
   return if filename.nil? # get out of the method if argument isn't given
   if File.exist?(filename) # if argument is given check if file exists
     load_students(filename)
-    puts "Loaded list of #{@students.count} students from #{filename}"
+    # puts "Loaded list of #{@students.count} students from #{filename}"
   else # if given file doesn't exist
     puts "Sorry, #{filename} doesn't exist"
-    exit #quit the program
+    exit # quit the program
   end
 end
 
